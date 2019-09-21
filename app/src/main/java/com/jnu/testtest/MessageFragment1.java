@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MessageFragment1 extends Fragment {
-    private TextView tv;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View messageLayout = inflater.inflate(R.layout.message1_layout, container, false);
-        tv=(TextView) messageLayout.findViewById(R.id.message);
-        tv.setText("1");
         return messageLayout;
     }
 }

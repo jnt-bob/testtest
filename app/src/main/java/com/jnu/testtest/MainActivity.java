@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 用于展示设置的Fragment
      */
-    private MessageFragment4 settingFragment;
 
     /**
      * 消息界面布局
@@ -137,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if(velocityX<0)
             {
-                if(num!=4)
+                if(num!=3)
                 {
                     num++;
 
@@ -163,11 +162,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         messageLayout = findViewById(R.id.message_layout);
         contactsLayout = findViewById(R.id.contacts_layout);
         newsLayout = findViewById(R.id.news_layout);
-        settingLayout = findViewById(R.id.setting_layout);
         messageLayout.setOnClickListener(this);
         contactsLayout.setOnClickListener(this);
         newsLayout.setOnClickListener(this);
-        settingLayout.setOnClickListener(this);
     }
 
     @Override
@@ -187,11 +184,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 当点击了动态tab时，选中第3个tab
                 setTabSelection(2);
                 num=2;
-                break;
-            case R.id.setting_layout:
-                // 当点击了设置tab时，选中第4个tab
-                setTabSelection(3);
-                num=3;
                 break;
             default:
                 break;
@@ -238,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case 2:
+            default:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
                 newsLayout.setBackgroundColor(0xff0000ff);
                 if (newsFragment == null) {
@@ -247,19 +240,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     // 如果NewsFragment不为空，则直接将它显示出来
                     transaction.show(newsFragment);
-                }
-                break;
-            case 3:
-            default:
-                // 当点击了设置tab时，改变控件的图片和文字颜色
-                settingLayout.setBackgroundColor(0xff0000ff);
-                if (settingFragment == null) {
-                    // 如果SettingFragment为空，则创建一个并添加到界面上
-                    settingFragment = new MessageFragment4();
-                    transaction.add(R.id.content, settingFragment);
-                } else {
-                    // 如果SettingFragment不为空，则直接将它显示出来
-                    transaction.show(settingFragment);
                 }
                 break;
         }
@@ -282,9 +262,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (newsFragment != null) {
             transaction.hide(newsFragment);
         }
-        if (settingFragment != null) {
-            transaction.hide(settingFragment);
-        }
+
     }
 
     /**
@@ -294,6 +272,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         messageLayout.setBackgroundColor(0xffffffff);
         contactsLayout.setBackgroundColor(0xffffffff);
         newsLayout.setBackgroundColor(0xffffffff);
-        settingLayout.setBackgroundColor(0xffffffff);
     }
 }
